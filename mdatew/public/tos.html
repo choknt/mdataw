@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Terms of Service</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+<main class="container">
+<h1>ข้อตกลงการใช้บริการ (TOS)</h1>
+<p>โปรดอ่านข้อตกลงนี้อย่างละเอียด โดยการกดยอมรับท่านยอมให้ผู้ให้บริการเก็บข้อมูลบางอย่างเพื่อความปลอดภัย ข้อมูลที่เก็บรวมถึง <strong>IP address</strong> ซึ่งเก็บอยู่ตรงส่วนกลางของเอกสารนี้ เพื่อวัตถุประสงค์ในการสอบสวนและติดตามเหตุการรั่วไหล คุณตกลงว่าการเก็บข้อมูลดังกล่าวเป็นไปเพื่อวัตถุประสงค์ดังกล่าว และท่านได้อ่าน เข้าใจ และยอมรับข้อตกลงทั้งหมดในเอกสารนี้...</p>
+<p>การใช้งานเว็บไซต์นี้ต้องมีกุญแจส่วนตัว (Key) หากท่านไม่ยอมรับข้อตกลงนี้ท่านจะไม่สามารถเข้าใช้งานได้</p>
+<button id="accept" class="btn">ยอมรับ</button>
+</main>
+<script>document.getElementById('accept').addEventListener('click', ()=>{
+localStorage.setItem('tos_accepted','1');
+location.href='/public/index.html'}
+);
+</script>
+</body>
+</html>

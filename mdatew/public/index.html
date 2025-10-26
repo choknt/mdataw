@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>MCYW Login</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+<main class="container">
+<h1>MCYW</h1>
+<p>กรุณาอ่านและยอมรับ <a href="/public/tos.html">TOS</a> ก่อนใช้งาน</p>
+<input id="keyInput" placeholder="Access Key" />
+<button id="useKey">เข้าใช้งาน</button>
+<div id="msg">
+</div>
+</main>
+<script>if(!localStorage.getItem('tos_accepted')) location.href='/public/tos.html';
+document.getElementById('useKey').addEventListener('click', async ()=>{
+const k=document.getElementById('keyInput').value.trim();
+ if(!k) return alert('ใส่ key');
+ const fp = (function(){
+const nav=navigator;
+const s=[nav.userAgent,nav.language,screen.width+'x'+screen.height,(new Date()).getTimezoneOffset(),!!localStorage,!!sessionStorage,navigator.hardwareConcurrency||1].join('||');
+let h=0;
+for(let i=0;
+i<s.length;
+i++){
+h=((h<<5)-h)+s.charCodeAt(i);
+h|=0}
+return 'fp_'+Math.abs(h).toString(36);
+}
+)();
+ const res = await fetch('/api/access',{
+method:'POST',headers:{
+'Content-Type':'application/json','X-ACCESS-KEY':k}
+,body:JSON.stringify({
+fingerprint:fp}
+)}
+);
+ const j=await res.json();
+ if(!j.ok) return document.getElementById('msg').innerText='key ไม่ถูกต้อง';
+ localStorage.setItem('mcyw_key',k);
+ localStorage.setItem('mcyw_user', j.userId||'user');
+ location.href='/public/protected.html';
+}
+);
+</script>
+</body>
+</html>

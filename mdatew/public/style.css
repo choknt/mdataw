@@ -1,0 +1,25 @@
+body{
+font-family:system-ui,Arial,Helvetica;
+background:#0b1220;
+color:#fff;
+margin:0}
+ .container{
+max-width:900px;
+margin:40px auto;
+padding:20px;
+background:#0f1724;
+border-radius:12px}
+ input{
+padding:10px;
+border-radius:8px;
+background:#0b1220;
+border:1px solid #233}
+ .btn{
+padding:10px 14px;
+background:#2563eb;
+border:none;
+border-radius:8px;
+color:#fff}
+ a{
+color:#60a5fa}
+
